@@ -97,6 +97,7 @@
     <EntitySetMapping Name="tPeriods">
       <EntityTypeMapping TypeName="TimetableModel.tPeriod">
         <MappingFragment StoreEntitySet="tPeriod">
+          <ScalarProperty Name="per_IsBreak" ColumnName="per_IsBreak" />
           <ScalarProperty Name="per_Id" ColumnName="per_Id" />
           <ScalarProperty Name="per_StartTime" ColumnName="per_StartTime" />
           <ScalarProperty Name="per_EndTime" ColumnName="per_EndTime" />

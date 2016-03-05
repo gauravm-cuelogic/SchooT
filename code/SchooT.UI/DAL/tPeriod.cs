@@ -34,6 +34,7 @@ namespace SchooT.UI.DAL
         public Nullable<bool> per_IsDeleted { get; set; }
         public Nullable<System.DateTime> per_DeletedDate { get; set; }
         public Nullable<int> per_DeletedBy { get; set; }
+        public bool per_IsBreak { get; set; }
     
         public virtual tBatch tBatch { get; set; }
         public virtual tClass tClass { get; set; }

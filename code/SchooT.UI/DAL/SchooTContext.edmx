@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TimetableModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TimetableModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tBatch">
           <Key>
             <PropertyRef Name="bat_id" />
@@ -101,6 +101,7 @@
           <Property Name="per_EndTime" Type="time" Precision="7" />
           <Property Name="per_Name" Type="varchar" MaxLength="25" />
           <Property Name="per_Length" Type="int" />
+          <Property Name="per_IsBreak" Type="bit" Nullable="false" />
           <Property Name="per_ClassId" Type="int" />
           <Property Name="per_BatchId" Type="int" />
           <Property Name="per_CreatedBy" Type="int" />
@@ -502,8 +503,7 @@
             <End Role="tTimeTable" EntitySet="tTimeTable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TimetableModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -629,6 +629,7 @@
           <NavigationProperty Name="tBatch" Relationship="Self.FK_tPeriod_tBatch" FromRole="tPeriod" ToRole="tBatch" />
           <NavigationProperty Name="tClass" Relationship="Self.FK_tPeriod_tClass" FromRole="tPeriod" ToRole="tClass" />
           <NavigationProperty Name="tTimeTables" Relationship="Self.FK_tTimeTable_tPeriod" FromRole="tPeriod" ToRole="tTimeTable" />
+          <Property Name="per_IsBreak" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tSection">
           <Key>
@@ -1140,6 +1141,7 @@
           <EntitySetMapping Name="tPeriods">
             <EntityTypeMapping TypeName="TimetableModel.tPeriod">
               <MappingFragment StoreEntitySet="tPeriod">
+                <ScalarProperty Name="per_IsBreak" ColumnName="per_IsBreak" />
                 <ScalarProperty Name="per_Id" ColumnName="per_Id" />
                 <ScalarProperty Name="per_StartTime" ColumnName="per_StartTime" />
                 <ScalarProperty Name="per_EndTime" ColumnName="per_EndTime" />

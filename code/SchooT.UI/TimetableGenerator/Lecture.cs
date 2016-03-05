@@ -27,5 +27,6 @@ namespace SchooT.Console
         public string DivisionName { get; set; }
 
         public Day Day { get; set; }
+        public bool IsBreak { get; set; }
     }
 }

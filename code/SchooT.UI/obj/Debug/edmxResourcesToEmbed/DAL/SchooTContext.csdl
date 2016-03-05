@@ -122,6 +122,7 @@
     <NavigationProperty Name="tBatch" Relationship="Self.FK_tPeriod_tBatch" FromRole="tPeriod" ToRole="tBatch" />
     <NavigationProperty Name="tClass" Relationship="Self.FK_tPeriod_tClass" FromRole="tPeriod" ToRole="tClass" />
     <NavigationProperty Name="tTimeTables" Relationship="Self.FK_tTimeTable_tPeriod" FromRole="tPeriod" ToRole="tTimeTable" />
+    <Property Name="per_IsBreak" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="tSection">
     <Key>

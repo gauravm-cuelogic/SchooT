@@ -13,14 +13,6 @@ namespace SchooT.Console
 
         private void AddClasses()
         {
-            //List<Division> listDivisions = new List<Division>(); 
-            //Division a = new Division { Id = 1, Name = "A" };
-            //Division b = new Division { Id = 2, Name = "B" };
-            //listDivisions.Add(a);
-            //listDivisions.Add(b);
-            //ListClasses.Add(new Class{ Id=1,Name="5th",ListDivisions=listDivisions});
-            //ListClasses.Add(new Class { Id = 2, Name = "6th", ListDivisions = listDivisions });
-
 
             var listClasses = tEntity.tClasses.ToList();
             foreach (var cl in listClasses)
@@ -32,11 +24,8 @@ namespace SchooT.Console
         }
         public void AddPeriods()
         {
-            //this.ListPeriods.Add(new Period { Id = 1, StartTime = 7, EndTime = 8 });
-            //this.ListPeriods.Add(new Period { Id = 2, StartTime = 8, EndTime = 9 });
-            //this.ListPeriods.Add(new Period { Id = 3, StartTime = 9, EndTime = 10 });
 
-            ListPeriods = tEntity.tPeriods.Select(t => new Period { Id = t.per_Id, StartTime = t.per_StartTime, EndTime = t.per_EndTime }).ToList();
+            ListPeriods = tEntity.tPeriods.Select(t => new Period { Id = t.per_Id, StartTime = t.per_StartTime, EndTime = t.per_EndTime,IsBreak=t.per_IsBreak,Name=t.per_Name }).ToList();
 
         }
         private void AddDays()
@@ -49,7 +38,6 @@ namespace SchooT.Console
         }
         private void AddMapClassDivSubjectTeachers()
         {
-            // var data=tEntity.tStaffSections.Select(t=>new MapClassDivSubTeacher { ClassId=t.tBatchClassSection.csc_ClassId,DivisionId=t.tBatchClassSection.csc_SectionId,SubjectId=t.tStaff.s})
 
             var data = from bcs in tEntity.tBatchClassSections
                        join classes in tEntity.tClasses on bcs.csc_ClassId equals classes.cla_id
@@ -62,92 +50,6 @@ namespace SchooT.Console
 
             ListMapClassDivSubjectTeachers = data.ToList();
 
-
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 1,
-            //    DivisionId = 1,
-            //    SubjectId = 1,
-            //    TeacherId = 1
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 1,
-            //    DivisionId = 1,
-            //    SubjectId = 2,
-            //    TeacherId = 2
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 1,
-            //    DivisionId = 1,
-            //    SubjectId = 3,
-            //    TeacherId = 3
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 1,
-            //    DivisionId = 2,
-            //    SubjectId = 1,
-            //    TeacherId = 1
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 1,
-            //    DivisionId = 2,
-            //    SubjectId = 2,
-            //    TeacherId = 2
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 1,
-            //    DivisionId = 2,
-            //    SubjectId = 3,
-            //    TeacherId = 3
-            //});
-
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 2,
-            //    DivisionId = 1,
-            //    SubjectId = 1,
-            //    TeacherId = 4
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 2,
-            //    DivisionId = 1,
-            //    SubjectId = 2,
-            //    TeacherId = 5
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 2,
-            //    DivisionId = 1,
-            //    SubjectId = 3,
-            //    TeacherId = 6
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 2,
-            //    DivisionId = 2,
-            //    SubjectId = 1,
-            //    TeacherId = 4
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 2,
-            //    DivisionId = 2,
-            //    SubjectId = 2,
-            //    TeacherId = 5
-            //});
-            //this.ListMapClassDivSubjectTeachers.Add(new MapClassDivSubTeacher
-            //{
-            //    ClassId = 2,
-            //    DivisionId = 2,
-            //    SubjectId = 3,
-            //    TeacherId = 6
-            //});
         }
 
         public Database()

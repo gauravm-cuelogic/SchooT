@@ -20,7 +20,7 @@ namespace SchooT.Console
 
         private bool AssignedForDay(int classId, int divisionId, int dayId, int periodId, int subjectId)
         {
-            var listLectures = timeTable.ListLectures;
+            var listLectures = timeTable.ListLectures.Where(t => !t.IsBreak);
             foreach (var lecture in listLectures)
             {
                 var exist = (lecture.ClassId == classId) &&
@@ -34,7 +34,7 @@ namespace SchooT.Console
         }
         private bool Assigned(int dayId, int periodId, int teacherId)
         {
-            var listLectures = timeTable.ListLectures;
+            var listLectures = timeTable.ListLectures.Where(t=>!t.IsBreak);
             foreach (var lecture in listLectures)
             {
                 var exist = (lecture.DayId == dayId) &&
@@ -68,6 +68,21 @@ namespace SchooT.Console
             this.timeTable.ListLectures.Add(lecture);
         }
 
+        private void AddLectureAsBreak(int classId, int divisionId, string subjectName,TimeSpan? startTime, TimeSpan? endTime, Day day)
+        {
+            var lecture = new Lecture
+            {
+                Day = day,
+                ClassId = classId,
+                DivisionId = divisionId,
+                SubjectName = subjectName,
+                StartTime = startTime,
+                EndTime = endTime,
+                IsBreak = true
+            };
+            this.timeTable.ListLectures.Add(lecture);
+        }
+
         private void RemoveLecture(int classId,int divisionId)
         {
             timeTable.ListLectures.RemoveAll(t => t.ClassId == classId && t.DivisionId == divisionId);
@@ -95,6 +110,11 @@ namespace SchooT.Console
                         foreach (var period in listPeriods)
                         {
                             var periodAssigned = false;
+                            if (period.IsBreak)
+                            {
+                                AddLectureAsBreak(cl.Id, division.Id,period.Name,period.StartTime, period.EndTime, day);
+                                periodAssigned = true;
+                            }                            
                             while (!periodAssigned)
                             {
                                 if (rollbackCount == 100)//It check 100 random possibility if not matched it breaks;
@@ -110,8 +130,7 @@ namespace SchooT.Console
                                     if (valid)
                                     {
                                         rollbackCount = 0;
-                                        periodAssigned = true;
-                                        //AddLecture(cl.Id, division.Id, mapClassDivSubTeacher.SubjectId, day.Id, period.Id, mapClassDivSubTeacher.TeacherId);
+                                        periodAssigned = true;                                        
                                         AddLecture(cl.Id, division.Id, mapClassDivSubTeacher.SubjectId, day.Id, period.Id, mapClassDivSubTeacher.TeacherId,mapClassDivSubTeacher.ClassName,mapClassDivSubTeacher.DivisionName,mapClassDivSubTeacher.SubjectName,mapClassDivSubTeacher.TeacherName,period.StartTime,period.EndTime,day);
                                         break;
                                     }

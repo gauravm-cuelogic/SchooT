@@ -96,6 +96,7 @@
     <Property Name="per_EndTime" Type="time" Precision="7" />
     <Property Name="per_Name" Type="varchar" MaxLength="25" />
     <Property Name="per_Length" Type="int" />
+    <Property Name="per_IsBreak" Type="bit" Nullable="false" />
     <Property Name="per_ClassId" Type="int" />
     <Property Name="per_BatchId" Type="int" />
     <Property Name="per_CreatedBy" Type="int" />

@@ -11,5 +11,8 @@ namespace SchooT.Console
         public int Id { get; set; }
         public TimeSpan? StartTime { get; set; }
         public TimeSpan? EndTime { get; set; }
+        public bool IsBreak { get; set; }
+
+        public string Name { get; set; }
     }
 }
