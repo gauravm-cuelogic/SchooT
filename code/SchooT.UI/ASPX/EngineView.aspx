@@ -29,16 +29,16 @@
         $NoConf(document).ready(function () {
             $NoConf('#calendar').fullCalendar({
                 header: {
-                    left: 'prev,next today',
-                    center: 'title',
+                    left: '',
+                    center: '',
                     right: ''
                 },
                 firstDay: 1,
                 minTime: "07:30:00",
-                maxTime: "14:30:00",
+                maxTime: "13:30:00",
                 defaultView: 'agendaWeek',
                 defaultDate: '2016-03-07',
-                editable: true,
+                editable: false,
                 eventLimit: true, // allow "more" link when too many events
                 events: $NoConf.parseJSON('<%= EventData%>')
             });
