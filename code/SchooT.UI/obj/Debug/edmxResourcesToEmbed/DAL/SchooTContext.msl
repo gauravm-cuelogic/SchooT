@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TimetableModelStoreContainer" CdmEntityContainer="TimetableEntities">
+    <EntitySetMapping Name="tBatches">
+      <EntityTypeMapping TypeName="TimetableModel.tBatch">
+        <MappingFragment StoreEntitySet="tBatch">
+          <ScalarProperty Name="bat_id" ColumnName="bat_id" />
+          <ScalarProperty Name="bat_Name" ColumnName="bat_Name" />
+          <ScalarProperty Name="bat_DisplayName" ColumnName="bat_DisplayName" />
+          <ScalarProperty Name="bat_IsDeleted" ColumnName="bat_IsDeleted" />
+          <ScalarProperty Name="bat_DeletedDate" ColumnName="bat_DeletedDate" />
+          <ScalarProperty Name="bat_DeletedBy" ColumnName="bat_DeletedBy" />
+          <ScalarProperty Name="bat_CreatedBy" ColumnName="bat_CreatedBy" />
+          <ScalarProperty Name="bat_CreatedDate" ColumnName="bat_CreatedDate" />
+          <ScalarProperty Name="bat_LastUpdatedDate" ColumnName="bat_LastUpdatedDate" />
+          <ScalarProperty Name="bat_LastUpdateBy" ColumnName="bat_LastUpdateBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tBatchClassSections">
+      <EntityTypeMapping TypeName="TimetableModel.tBatchClassSection">
+        <MappingFragment StoreEntitySet="tBatchClassSection">
+          <ScalarProperty Name="csc_BatchClassSectionId" ColumnName="csc_BatchClassSectionId" />
+          <ScalarProperty Name="csc_SectionId" ColumnName="csc_SectionId" />
+          <ScalarProperty Name="csc_ClassId" ColumnName="csc_ClassId" />
+          <ScalarProperty Name="csc_BatchId" ColumnName="csc_BatchId" />
+          <ScalarProperty Name="csc_IsDeleted" ColumnName="csc_IsDeleted" />
+          <ScalarProperty Name="csc_DeletedBy" ColumnName="csc_DeletedBy" />
+          <ScalarProperty Name="csc_CreatedBy" ColumnName="csc_CreatedBy" />
+          <ScalarProperty Name="csc_CreatedDate" ColumnName="csc_CreatedDate" />
+          <ScalarProperty Name="csc_LastUpdatedDate" ColumnName="csc_LastUpdatedDate" />
+          <ScalarProperty Name="csc_LastUpdateBy" ColumnName="csc_LastUpdateBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tClasses">
+      <EntityTypeMapping TypeName="TimetableModel.tClass">
+        <MappingFragment StoreEntitySet="tClass">
+          <ScalarProperty Name="cla_id" ColumnName="cla_id" />
+          <ScalarProperty Name="cla_Name" ColumnName="cla_Name" />
+          <ScalarProperty Name="cla_CreatedBy" ColumnName="cla_CreatedBy" />
+          <ScalarProperty Name="cla_UpdatedBy" ColumnName="cla_UpdatedBy" />
+          <ScalarProperty Name="cla_CreationDate" ColumnName="cla_CreationDate" />
+          <ScalarProperty Name="cla_UpdatedDate" ColumnName="cla_UpdatedDate" />
+          <ScalarProperty Name="cla_IsDeleted" ColumnName="cla_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tClassSubjects">
+      <EntityTypeMapping TypeName="TimetableModel.tClassSubject">
+        <MappingFragment StoreEntitySet="tClassSubject">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="PeriodsInWeek" ColumnName="PeriodsInWeek" />
+          <ScalarProperty Name="IsHeavy" ColumnName="IsHeavy" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="IsDouble" ColumnName="IsDouble" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tHolidays">
+      <EntityTypeMapping TypeName="TimetableModel.tHoliday">
+        <MappingFragment StoreEntitySet="tHoliday">
+          <ScalarProperty Name="hod_Id" ColumnName="hod_Id" />
+          <ScalarProperty Name="hod_Name" ColumnName="hod_Name" />
+          <ScalarProperty Name="hod_TypeId" ColumnName="hod_TypeId" />
+          <ScalarProperty Name="hod_From" ColumnName="hod_From" />
+          <ScalarProperty Name="hod_To" ColumnName="hod_To" />
+          <ScalarProperty Name="hod_CreatedBy" ColumnName="hod_CreatedBy" />
+          <ScalarProperty Name="hod_UpdatedBy" ColumnName="hod_UpdatedBy" />
+          <ScalarProperty Name="hod_CreatedDate" ColumnName="hod_CreatedDate" />
+          <ScalarProperty Name="hod_UpdatedDate" ColumnName="hod_UpdatedDate" />
+          <ScalarProperty Name="hod_IsDeleted" ColumnName="hod_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tHolidayTypes">
+      <EntityTypeMapping TypeName="TimetableModel.tHolidayType">
+        <MappingFragment StoreEntitySet="tHolidayType">
+          <ScalarProperty Name="hot_Id" ColumnName="hot_Id" />
+          <ScalarProperty Name="hot_Name" ColumnName="hot_Name" />
+          <ScalarProperty Name="hot_CreatedBy" ColumnName="hot_CreatedBy" />
+          <ScalarProperty Name="hot_UpdatedBy" ColumnName="hot_UpdatedBy" />
+          <ScalarProperty Name="hot_CreatedDate" ColumnName="hot_CreatedDate" />
+          <ScalarProperty Name="hot_UpdatedDate" ColumnName="hot_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tPeriods">
+      <EntityTypeMapping TypeName="TimetableModel.tPeriod">
+        <MappingFragment StoreEntitySet="tPeriod">
+          <ScalarProperty Name="per_Id" ColumnName="per_Id" />
+          <ScalarProperty Name="per_StartTime" ColumnName="per_StartTime" />
+          <ScalarProperty Name="per_EndTime" ColumnName="per_EndTime" />
+          <ScalarProperty Name="per_Name" ColumnName="per_Name" />
+          <ScalarProperty Name="per_Length" ColumnName="per_Length" />
+          <ScalarProperty Name="per_ClassId" ColumnName="per_ClassId" />
+          <ScalarProperty Name="per_BatchId" ColumnName="per_BatchId" />
+          <ScalarProperty Name="per_CreatedBy" ColumnName="per_CreatedBy" />
+          <ScalarProperty Name="per_UpdatedBy" ColumnName="per_UpdatedBy" />
+          <ScalarProperty Name="per_CreatedDate" ColumnName="per_CreatedDate" />
+          <ScalarProperty Name="per_UpdatedDate" ColumnName="per_UpdatedDate" />
+          <ScalarProperty Name="per_IsDeleted" ColumnName="per_IsDeleted" />
+          <ScalarProperty Name="per_DeletedDate" ColumnName="per_DeletedDate" />
+          <ScalarProperty Name="per_DeletedBy" ColumnName="per_DeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tSections">
+      <EntityTypeMapping TypeName="TimetableModel.tSection">
+        <MappingFragment StoreEntitySet="tSections">
+          <ScalarProperty Name="sec_id" ColumnName="sec_id" />
+          <ScalarProperty Name="sec_SectionName" ColumnName="sec_SectionName" />
+          <ScalarProperty Name="sec_DisplayName" ColumnName="sec_DisplayName" />
+          <ScalarProperty Name="sec_IsDeleted" ColumnName="sec_IsDeleted" />
+          <ScalarProperty Name="sec_CreatedDate" ColumnName="sec_CreatedDate" />
+          <ScalarProperty Name="sec_CreatedBy" ColumnName="sec_CreatedBy" />
+          <ScalarProperty Name="sec_LastUpdatedBy" ColumnName="sec_LastUpdatedBy" />
+          <ScalarProperty Name="sec_LastUpdatedDate" ColumnName="sec_LastUpdatedDate" />
+          <ScalarProperty Name="sec_DeletedDate" ColumnName="sec_DeletedDate" />
+          <ScalarProperty Name="sec_DeletedBy" ColumnName="sec_DeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStaffs">
+      <EntityTypeMapping TypeName="TimetableModel.tStaff">
+        <MappingFragment StoreEntitySet="tStaff">
+          <ScalarProperty Name="sta_Id" ColumnName="sta_Id" />
+          <ScalarProperty Name="sta_Name" ColumnName="sta_Name" />
+          <ScalarProperty Name="sta_TypeId" ColumnName="sta_TypeId" />
+          <ScalarProperty Name="sta_IsDeleted" ColumnName="sta_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStaffSections">
+      <EntityTypeMapping TypeName="TimetableModel.tStaffSection">
+        <MappingFragment StoreEntitySet="tStaffSection">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BatchClassSectionId" ColumnName="BatchClassSectionId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LasyUpdatedBy" ColumnName="LasyUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStaffSubjects">
+      <EntityTypeMapping TypeName="TimetableModel.tStaffSubject">
+        <MappingFragment StoreEntitySet="tStaffSubject">
+          <ScalarProperty Name="stcg_Id" ColumnName="stcg_Id" />
+          <ScalarProperty Name="stcg_StaffId" ColumnName="stcg_StaffId" />
+          <ScalarProperty Name="stcg_SubjectId" ColumnName="stcg_SubjectId" />
+          <ScalarProperty Name="stcg_CreatedBy" ColumnName="stcg_CreatedBy" />
+          <ScalarProperty Name="stcg_UpdatedBy" ColumnName="stcg_UpdatedBy" />
+          <ScalarProperty Name="stcg_CreatedDate" ColumnName="stcg_CreatedDate" />
+          <ScalarProperty Name="stcg_UpdatedDate" ColumnName="stcg_UpdatedDate" />
+          <ScalarProperty Name="stcg_IsDeleted" ColumnName="stcg_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStaffTypes">
+      <EntityTypeMapping TypeName="TimetableModel.tStaffType">
+        <MappingFragment StoreEntitySet="tStaffType">
+          <ScalarProperty Name="stt_Id" ColumnName="stt_Id" />
+          <ScalarProperty Name="stt_Name" ColumnName="stt_Name" />
+          <ScalarProperty Name="stt_IsDeleted" ColumnName="stt_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tSubjects">
+      <EntityTypeMapping TypeName="TimetableModel.tSubject">
+        <MappingFragment StoreEntitySet="tSubject">
+          <ScalarProperty Name="sub_Id" ColumnName="sub_Id" />
+          <ScalarProperty Name="sub_Name" ColumnName="sub_Name" />
+          <ScalarProperty Name="sub_IsHeavy" ColumnName="sub_IsHeavy" />
+          <ScalarProperty Name="sub_Priority" ColumnName="sub_Priority" />
+          <ScalarProperty Name="sub_IsDouble" ColumnName="sub_IsDouble" />
+          <ScalarProperty Name="sub_CreatedBy" ColumnName="sub_CreatedBy" />
+          <ScalarProperty Name="sub_UpdatedBy" ColumnName="sub_UpdatedBy" />
+          <ScalarProperty Name="sub_CreationDate" ColumnName="sub_CreationDate" />
+          <ScalarProperty Name="sub_UpdatedDate" ColumnName="sub_UpdatedDate" />
+          <ScalarProperty Name="sub_IsDeleted" ColumnName="sub_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTimeTables">
+      <EntityTypeMapping TypeName="TimetableModel.tTimeTable">
+        <MappingFragment StoreEntitySet="tTimeTable">
+          <ScalarProperty Name="tit_id" ColumnName="tit_id" />
+          <ScalarProperty Name="tit_BatchClassSectionId" ColumnName="tit_BatchClassSectionId" />
+          <ScalarProperty Name="tit_StaffId" ColumnName="tit_StaffId" />
+          <ScalarProperty Name="tit_WeekDay" ColumnName="tit_WeekDay" />
+          <ScalarProperty Name="tit_PeriodId" ColumnName="tit_PeriodId" />
+          <ScalarProperty Name="tit_SubjectId" ColumnName="tit_SubjectId" />
+          <ScalarProperty Name="tit_CreatedBy" ColumnName="tit_CreatedBy" />
+          <ScalarProperty Name="tit_UpdatedBy" ColumnName="tit_UpdatedBy" />
+          <ScalarProperty Name="tit_CreatedDate" ColumnName="tit_CreatedDate" />
+          <ScalarProperty Name="tit_UpdatedDate" ColumnName="tit_UpdatedDate" />
+          <ScalarProperty Name="tit_IsDeleted" ColumnName="tit_IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTimeTableConstraintTypes">
+      <EntityTypeMapping TypeName="TimetableModel.tTimeTableConstraintType">
+        <MappingFragment StoreEntitySet="tTimeTableConstraintType">
+          <ScalarProperty Name="tct_Id" ColumnName="tct_Id" />
+          <ScalarProperty Name="tct_Name" ColumnName="tct_Name" />
+          <ScalarProperty Name="tct_CreatedBy" ColumnName="tct_CreatedBy" />
+          <ScalarProperty Name="tct_UpdatedBy" ColumnName="tct_UpdatedBy" />
+          <ScalarProperty Name="tct_CreatedDate" ColumnName="tct_CreatedDate" />
+          <ScalarProperty Name="ct_UpdatedDate" ColumnName="ct_UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

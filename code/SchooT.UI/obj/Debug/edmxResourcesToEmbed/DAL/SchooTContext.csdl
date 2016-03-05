@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TimetableModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tBatch">
+    <Key>
+      <PropertyRef Name="bat_id" />
+    </Key>
+    <Property Name="bat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bat_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bat_DisplayName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bat_IsDeleted" Type="Boolean" />
+    <Property Name="bat_DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="bat_DeletedBy" Type="Int32" />
+    <Property Name="bat_CreatedBy" Type="Int32" />
+    <Property Name="bat_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="bat_LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="bat_LastUpdateBy" Type="Int32" />
+    <NavigationProperty Name="tBatchClassSections" Relationship="Self.FK_tBatchClassSection_tBatch" FromRole="tBatch" ToRole="tBatchClassSection" />
+    <NavigationProperty Name="tPeriods" Relationship="Self.FK_tPeriod_tBatch" FromRole="tBatch" ToRole="tPeriod" />
+  </EntityType>
+  <EntityType Name="tBatchClassSection">
+    <Key>
+      <PropertyRef Name="csc_BatchClassSectionId" />
+    </Key>
+    <Property Name="csc_BatchClassSectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="csc_SectionId" Type="Int32" Nullable="false" />
+    <Property Name="csc_ClassId" Type="Int32" Nullable="false" />
+    <Property Name="csc_BatchId" Type="Int32" Nullable="false" />
+    <Property Name="csc_IsDeleted" Type="Boolean" />
+    <Property Name="csc_DeletedBy" Type="Int32" />
+    <Property Name="csc_CreatedBy" Type="Int32" />
+    <Property Name="csc_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="csc_LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="csc_LastUpdateBy" Type="Int32" />
+    <NavigationProperty Name="tBatch" Relationship="Self.FK_tBatchClassSection_tBatch" FromRole="tBatchClassSection" ToRole="tBatch" />
+    <NavigationProperty Name="tClass" Relationship="Self.FK_tBatchClassSection_tClass" FromRole="tBatchClassSection" ToRole="tClass" />
+    <NavigationProperty Name="tSection" Relationship="Self.FK_tBatchClassSection_tSections" FromRole="tBatchClassSection" ToRole="tSections" />
+    <NavigationProperty Name="tStaffSections" Relationship="Self.FK_tStaffSection_tBatchClassSection" FromRole="tBatchClassSection" ToRole="tStaffSection" />
+    <NavigationProperty Name="tTimeTables" Relationship="Self.FK_tTimeTable_tBatchClassSection" FromRole="tBatchClassSection" ToRole="tTimeTable" />
+  </EntityType>
+  <EntityType Name="tClass">
+    <Key>
+      <PropertyRef Name="cla_id" />
+    </Key>
+    <Property Name="cla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cla_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="cla_CreatedBy" Type="Int32" />
+    <Property Name="cla_UpdatedBy" Type="Int32" />
+    <Property Name="cla_CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="cla_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="cla_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tBatchClassSections" Relationship="Self.FK_tBatchClassSection_tClass" FromRole="tClass" ToRole="tBatchClassSection" />
+    <NavigationProperty Name="tClassSubjects" Relationship="Self.FK_tClassSubject_tClass" FromRole="tClass" ToRole="tClassSubject" />
+    <NavigationProperty Name="tPeriods" Relationship="Self.FK_tPeriod_tClass" FromRole="tClass" ToRole="tPeriod" />
+  </EntityType>
+  <EntityType Name="tClassSubject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="PeriodsInWeek" Type="Int32" />
+    <Property Name="IsHeavy" Type="Boolean" />
+    <Property Name="Priority" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsDouble" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tClass" Relationship="Self.FK_tClassSubject_tClass" FromRole="tClassSubject" ToRole="tClass" />
+    <NavigationProperty Name="tSubject" Relationship="Self.FK_tClassSubject_tSubject" FromRole="tClassSubject" ToRole="tSubject" />
+  </EntityType>
+  <EntityType Name="tHoliday">
+    <Key>
+      <PropertyRef Name="hod_Id" />
+    </Key>
+    <Property Name="hod_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hod_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="hod_TypeId" Type="Int32" />
+    <Property Name="hod_From" Type="DateTime" Precision="0" />
+    <Property Name="hod_To" Type="DateTime" Precision="0" />
+    <Property Name="hod_CreatedBy" Type="Int32" />
+    <Property Name="hod_UpdatedBy" Type="Int32" />
+    <Property Name="hod_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="hod_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="hod_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tHolidayType" Relationship="Self.FK_tHoliday_tHolidayType" FromRole="tHoliday" ToRole="tHolidayType" />
+  </EntityType>
+  <EntityType Name="tHolidayType">
+    <Key>
+      <PropertyRef Name="hot_Id" />
+    </Key>
+    <Property Name="hot_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hot_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="hot_CreatedBy" Type="Int32" />
+    <Property Name="hot_UpdatedBy" Type="Int32" />
+    <Property Name="hot_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="hot_UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tHolidays" Relationship="Self.FK_tHoliday_tHolidayType" FromRole="tHolidayType" ToRole="tHoliday" />
+  </EntityType>
+  <EntityType Name="tPeriod">
+    <Key>
+      <PropertyRef Name="per_Id" />
+    </Key>
+    <Property Name="per_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="per_StartTime" Type="Time" Precision="7" />
+    <Property Name="per_EndTime" Type="Time" Precision="7" />
+    <Property Name="per_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="per_Length" Type="Int32" />
+    <Property Name="per_ClassId" Type="Int32" />
+    <Property Name="per_BatchId" Type="Int32" />
+    <Property Name="per_CreatedBy" Type="Int32" />
+    <Property Name="per_UpdatedBy" Type="Int32" />
+    <Property Name="per_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="per_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="per_IsDeleted" Type="Boolean" />
+    <Property Name="per_DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="per_DeletedBy" Type="Int32" />
+    <NavigationProperty Name="tBatch" Relationship="Self.FK_tPeriod_tBatch" FromRole="tPeriod" ToRole="tBatch" />
+    <NavigationProperty Name="tClass" Relationship="Self.FK_tPeriod_tClass" FromRole="tPeriod" ToRole="tClass" />
+    <NavigationProperty Name="tTimeTables" Relationship="Self.FK_tTimeTable_tPeriod" FromRole="tPeriod" ToRole="tTimeTable" />
+  </EntityType>
+  <EntityType Name="tSection">
+    <Key>
+      <PropertyRef Name="sec_id" />
+    </Key>
+    <Property Name="sec_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sec_SectionName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sec_DisplayName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sec_IsDeleted" Type="Boolean" />
+    <Property Name="sec_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="sec_CreatedBy" Type="Int32" />
+    <Property Name="sec_LastUpdatedBy" Type="Int32" />
+    <Property Name="sec_LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="sec_DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="sec_DeletedBy" Type="Int32" />
+    <NavigationProperty Name="tBatchClassSections" Relationship="Self.FK_tBatchClassSection_tSections" FromRole="tSections" ToRole="tBatchClassSection" />
+  </EntityType>
+  <EntityType Name="tStaff">
+    <Key>
+      <PropertyRef Name="sta_Id" />
+    </Key>
+    <Property Name="sta_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sta_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="sta_TypeId" Type="Int32" />
+    <Property Name="sta_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tStaffType" Relationship="Self.FK_tStaff_tStaffType" FromRole="tStaff" ToRole="tStaffType" />
+    <NavigationProperty Name="tStaffSections" Relationship="Self.FK_tStaffSection_tStaff" FromRole="tStaff" ToRole="tStaffSection" />
+    <NavigationProperty Name="tStaffSubjects" Relationship="Self.FK_tStaffSubject_tStaff" FromRole="tStaff" ToRole="tStaffSubject" />
+    <NavigationProperty Name="tTimeTables" Relationship="Self.FK_tTimeTable_tStaff" FromRole="tStaff" ToRole="tTimeTable" />
+  </EntityType>
+  <EntityType Name="tStaffSection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchClassSectionId" Type="Int32" />
+    <Property Name="TeacherId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="LasyUpdatedBy" Type="Int32" />
+    <NavigationProperty Name="tBatchClassSection" Relationship="Self.FK_tStaffSection_tBatchClassSection" FromRole="tStaffSection" ToRole="tBatchClassSection" />
+    <NavigationProperty Name="tStaff" Relationship="Self.FK_tStaffSection_tStaff" FromRole="tStaffSection" ToRole="tStaff" />
+  </EntityType>
+  <EntityType Name="tStaffSubject">
+    <Key>
+      <PropertyRef Name="stcg_Id" />
+    </Key>
+    <Property Name="stcg_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stcg_StaffId" Type="Int32" />
+    <Property Name="stcg_SubjectId" Type="Int32" />
+    <Property Name="stcg_CreatedBy" Type="Int32" />
+    <Property Name="stcg_UpdatedBy" Type="Int32" />
+    <Property Name="stcg_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="stcg_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="stcg_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tStaff" Relationship="Self.FK_tStaffSubject_tStaff" FromRole="tStaffSubject" ToRole="tStaff" />
+    <NavigationProperty Name="tSubject" Relationship="Self.FK_tStaffSubject_tSubject" FromRole="tStaffSubject" ToRole="tSubject" />
+  </EntityType>
+  <EntityType Name="tStaffType">
+    <Key>
+      <PropertyRef Name="stt_Id" />
+    </Key>
+    <Property Name="stt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stt_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="stt_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tStaffs" Relationship="Self.FK_tStaff_tStaffType" FromRole="tStaffType" ToRole="tStaff" />
+  </EntityType>
+  <EntityType Name="tSubject">
+    <Key>
+      <PropertyRef Name="sub_Id" />
+    </Key>
+    <Property Name="sub_Id" Type="Int32" Nullable="false" />
+    <Property Name="sub_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="sub_IsHeavy" Type="Boolean" />
+    <Property Name="sub_Priority" Type="Int32" />
+    <Property Name="sub_IsDouble" Type="Boolean" />
+    <Property Name="sub_CreatedBy" Type="Int32" />
+    <Property Name="sub_UpdatedBy" Type="Int32" />
+    <Property Name="sub_CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="sub_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="sub_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tClassSubjects" Relationship="Self.FK_tClassSubject_tSubject" FromRole="tSubject" ToRole="tClassSubject" />
+    <NavigationProperty Name="tStaffSubjects" Relationship="Self.FK_tStaffSubject_tSubject" FromRole="tSubject" ToRole="tStaffSubject" />
+    <NavigationProperty Name="tTimeTables" Relationship="Self.FK_tTimeTable_tSubject" FromRole="tSubject" ToRole="tTimeTable" />
+  </EntityType>
+  <EntityType Name="tTimeTable">
+    <Key>
+      <PropertyRef Name="tit_id" />
+    </Key>
+    <Property Name="tit_id" Type="Int32" Nullable="false" />
+    <Property Name="tit_BatchClassSectionId" Type="Int32" />
+    <Property Name="tit_StaffId" Type="Int32" />
+    <Property Name="tit_WeekDay" Type="Int32" />
+    <Property Name="tit_PeriodId" Type="Int32" />
+    <Property Name="tit_SubjectId" Type="Int32" />
+    <Property Name="tit_CreatedBy" Type="Int32" />
+    <Property Name="tit_UpdatedBy" Type="Int32" />
+    <Property Name="tit_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="tit_UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="tit_IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="tBatchClassSection" Relationship="Self.FK_tTimeTable_tBatchClassSection" FromRole="tTimeTable" ToRole="tBatchClassSection" />
+    <NavigationProperty Name="tPeriod" Relationship="Self.FK_tTimeTable_tPeriod" FromRole="tTimeTable" ToRole="tPeriod" />
+    <NavigationProperty Name="tStaff" Relationship="Self.FK_tTimeTable_tStaff" FromRole="tTimeTable" ToRole="tStaff" />
+    <NavigationProperty Name="tSubject" Relationship="Self.FK_tTimeTable_tSubject" FromRole="tTimeTable" ToRole="tSubject" />
+  </EntityType>
+  <EntityType Name="tTimeTableConstraintType">
+    <Key>
+      <PropertyRef Name="tct_Id" />
+    </Key>
+    <Property Name="tct_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tct_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="tct_CreatedBy" Type="Int32" />
+    <Property Name="tct_UpdatedBy" Type="Int32" />
+    <Property Name="tct_CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ct_UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_tBatchClassSection_tBatch">
+    <End Role="tBatch" Type="Self.tBatch" Multiplicity="1" />
+    <End Role="tBatchClassSection" Type="Self.tBatchClassSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tBatch">
+        <PropertyRef Name="bat_id" />
+      </Principal>
+      <Dependent Role="tBatchClassSection">
+        <PropertyRef Name="csc_BatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tPeriod_tBatch">
+    <End Role="tBatch" Type="Self.tBatch" Multiplicity="0..1" />
+    <End Role="tPeriod" Type="Self.tPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tBatch">
+        <PropertyRef Name="bat_id" />
+      </Principal>
+      <Dependent Role="tPeriod">
+        <PropertyRef Name="per_BatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tBatchClassSection_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="1" />
+    <End Role="tBatchClassSection" Type="Self.tBatchClassSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="cla_id" />
+      </Principal>
+      <Dependent Role="tBatchClassSection">
+        <PropertyRef Name="csc_ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tBatchClassSection_tSections">
+    <End Role="tSections" Type="Self.tSection" Multiplicity="1" />
+    <End Role="tBatchClassSection" Type="Self.tBatchClassSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSections">
+        <PropertyRef Name="sec_id" />
+      </Principal>
+      <Dependent Role="tBatchClassSection">
+        <PropertyRef Name="csc_SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tStaffSection_tBatchClassSection">
+    <End Role="tBatchClassSection" Type="Self.tBatchClassSection" Multiplicity="0..1" />
+    <End Role="tStaffSection" Type="Self.tStaffSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tBatchClassSection">
+        <PropertyRef Name="csc_BatchClassSectionId" />
+      </Principal>
+      <Dependent Role="tStaffSection">
+        <PropertyRef Name="BatchClassSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tTimeTable_tBatchClassSection">
+    <End Role="tBatchClassSection" Type="Self.tBatchClassSection" Multiplicity="0..1" />
+    <End Role="tTimeTable" Type="Self.tTimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tBatchClassSection">
+        <PropertyRef Name="csc_BatchClassSectionId" />
+      </Principal>
+      <Dependent Role="tTimeTable">
+        <PropertyRef Name="tit_BatchClassSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tClassSubject_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="0..1" />
+    <End Role="tClassSubject" Type="Self.tClassSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="cla_id" />
+      </Principal>
+      <Dependent Role="tClassSubject">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tPeriod_tClass">
+    <End Role="tClass" Type="Self.tClass" Multiplicity="0..1" />
+    <End Role="tPeriod" Type="Self.tPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tClass">
+        <PropertyRef Name="cla_id" />
+      </Principal>
+      <Dependent Role="tPeriod">
+        <PropertyRef Name="per_ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tClassSubject_tSubject">
+    <End Role="tSubject" Type="Self.tSubject" Multiplicity="0..1" />
+    <End Role="tClassSubject" Type="Self.tClassSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSubject">
+        <PropertyRef Name="sub_Id" />
+      </Principal>
+      <Dependent Role="tClassSubject">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tHoliday_tHolidayType">
+    <End Role="tHolidayType" Type="Self.tHolidayType" Multiplicity="0..1" />
+    <End Role="tHoliday" Type="Self.tHoliday" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tHolidayType">
+        <PropertyRef Name="hot_Id" />
+      </Principal>
+      <Dependent Role="tHoliday">
+        <PropertyRef Name="hod_TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tTimeTable_tPeriod">
+    <End Role="tPeriod" Type="Self.tPeriod" Multiplicity="0..1" />
+    <End Role="tTimeTable" Type="Self.tTimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tPeriod">
+        <PropertyRef Name="per_Id" />
+      </Principal>
+      <Dependent Role="tTimeTable">
+        <PropertyRef Name="tit_PeriodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tStaff_tStaffType">
+    <End Role="tStaffType" Type="Self.tStaffType" Multiplicity="0..1" />
+    <End Role="tStaff" Type="Self.tStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tStaffType">
+        <PropertyRef Name="stt_Id" />
+      </Principal>
+      <Dependent Role="tStaff">
+        <PropertyRef Name="sta_TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tStaffSection_tStaff">
+    <End Role="tStaff" Type="Self.tStaff" Multiplicity="0..1" />
+    <End Role="tStaffSection" Type="Self.tStaffSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tStaff">
+        <PropertyRef Name="sta_Id" />
+      </Principal>
+      <Dependent Role="tStaffSection">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tStaffSubject_tStaff">
+    <End Role="tStaff" Type="Self.tStaff" Multiplicity="0..1" />
+    <End Role="tStaffSubject" Type="Self.tStaffSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tStaff">
+        <PropertyRef Name="sta_Id" />
+      </Principal>
+      <Dependent Role="tStaffSubject">
+        <PropertyRef Name="stcg_StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tTimeTable_tStaff">
+    <End Role="tStaff" Type="Self.tStaff" Multiplicity="0..1" />
+    <End Role="tTimeTable" Type="Self.tTimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tStaff">
+        <PropertyRef Name="sta_Id" />
+      </Principal>
+      <Dependent Role="tTimeTable">
+        <PropertyRef Name="tit_StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tStaffSubject_tSubject">
+    <End Role="tSubject" Type="Self.tSubject" Multiplicity="0..1" />
+    <End Role="tStaffSubject" Type="Self.tStaffSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSubject">
+        <PropertyRef Name="sub_Id" />
+      </Principal>
+      <Dependent Role="tStaffSubject">
+        <PropertyRef Name="stcg_SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tTimeTable_tSubject">
+    <End Role="tSubject" Type="Self.tSubject" Multiplicity="0..1" />
+    <End Role="tTimeTable" Type="Self.tTimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSubject">
+        <PropertyRef Name="sub_Id" />
+      </Principal>
+      <Dependent Role="tTimeTable">
+        <PropertyRef Name="tit_SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TimetableEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tBatches" EntityType="Self.tBatch" />
+    <EntitySet Name="tBatchClassSections" EntityType="Self.tBatchClassSection" />
+    <EntitySet Name="tClasses" EntityType="Self.tClass" />
+    <EntitySet Name="tClassSubjects" EntityType="Self.tClassSubject" />
+    <EntitySet Name="tHolidays" EntityType="Self.tHoliday" />
+    <EntitySet Name="tHolidayTypes" EntityType="Self.tHolidayType" />
+    <EntitySet Name="tPeriods" EntityType="Self.tPeriod" />
+    <EntitySet Name="tSections" EntityType="Self.tSection" />
+    <EntitySet Name="tStaffs" EntityType="Self.tStaff" />
+    <EntitySet Name="tStaffSections" EntityType="Self.tStaffSection" />
+    <EntitySet Name="tStaffSubjects" EntityType="Self.tStaffSubject" />
+    <EntitySet Name="tStaffTypes" EntityType="Self.tStaffType" />
+    <EntitySet Name="tSubjects" EntityType="Self.tSubject" />
+    <EntitySet Name="tTimeTables" EntityType="Self.tTimeTable" />
+    <EntitySet Name="tTimeTableConstraintTypes" EntityType="Self.tTimeTableConstraintType" />
+    <AssociationSet Name="FK_tBatchClassSection_tBatch" Association="Self.FK_tBatchClassSection_tBatch">
+      <End Role="tBatch" EntitySet="tBatches" />
+      <End Role="tBatchClassSection" EntitySet="tBatchClassSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tPeriod_tBatch" Association="Self.FK_tPeriod_tBatch">
+      <End Role="tBatch" EntitySet="tBatches" />
+      <End Role="tPeriod" EntitySet="tPeriods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tBatchClassSection_tClass" Association="Self.FK_tBatchClassSection_tClass">
+      <End Role="tClass" EntitySet="tClasses" />
+      <End Role="tBatchClassSection" EntitySet="tBatchClassSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tBatchClassSection_tSections" Association="Self.FK_tBatchClassSection_tSections">
+      <End Role="tSections" EntitySet="tSections" />
+      <End Role="tBatchClassSection" EntitySet="tBatchClassSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tStaffSection_tBatchClassSection" Association="Self.FK_tStaffSection_tBatchClassSection">
+      <End Role="tBatchClassSection" EntitySet="tBatchClassSections" />
+      <End Role="tStaffSection" EntitySet="tStaffSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tTimeTable_tBatchClassSection" Association="Self.FK_tTimeTable_tBatchClassSection">
+      <End Role="tBatchClassSection" EntitySet="tBatchClassSections" />
+      <End Role="tTimeTable" EntitySet="tTimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tClassSubject_tClass" Association="Self.FK_tClassSubject_tClass">
+      <End Role="tClass" EntitySet="tClasses" />
+      <End Role="tClassSubject" EntitySet="tClassSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tPeriod_tClass" Association="Self.FK_tPeriod_tClass">
+      <End Role="tClass" EntitySet="tClasses" />
+      <End Role="tPeriod" EntitySet="tPeriods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tClassSubject_tSubject" Association="Self.FK_tClassSubject_tSubject">
+      <End Role="tSubject" EntitySet="tSubjects" />
+      <End Role="tClassSubject" EntitySet="tClassSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tHoliday_tHolidayType" Association="Self.FK_tHoliday_tHolidayType">
+      <End Role="tHolidayType" EntitySet="tHolidayTypes" />
+      <End Role="tHoliday" EntitySet="tHolidays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tTimeTable_tPeriod" Association="Self.FK_tTimeTable_tPeriod">
+      <End Role="tPeriod" EntitySet="tPeriods" />
+      <End Role="tTimeTable" EntitySet="tTimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tStaff_tStaffType" Association="Self.FK_tStaff_tStaffType">
+      <End Role="tStaffType" EntitySet="tStaffTypes" />
+      <End Role="tStaff" EntitySet="tStaffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tStaffSection_tStaff" Association="Self.FK_tStaffSection_tStaff">
+      <End Role="tStaff" EntitySet="tStaffs" />
+      <End Role="tStaffSection" EntitySet="tStaffSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tStaffSubject_tStaff" Association="Self.FK_tStaffSubject_tStaff">
+      <End Role="tStaff" EntitySet="tStaffs" />
+      <End Role="tStaffSubject" EntitySet="tStaffSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tTimeTable_tStaff" Association="Self.FK_tTimeTable_tStaff">
+      <End Role="tStaff" EntitySet="tStaffs" />
+      <End Role="tTimeTable" EntitySet="tTimeTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tStaffSubject_tSubject" Association="Self.FK_tStaffSubject_tSubject">
+      <End Role="tSubject" EntitySet="tSubjects" />
+      <End Role="tStaffSubject" EntitySet="tStaffSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tTimeTable_tSubject" Association="Self.FK_tTimeTable_tSubject">
+      <End Role="tSubject" EntitySet="tSubjects" />
+      <End Role="tTimeTable" EntitySet="tTimeTables" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
