@@ -156,7 +156,7 @@
     </div>
     <!-- /. WRAPPER  -->
     <footer>
-        &copy; <%= DateTime.Now.Year.ToString() %> Kaveri Institute | By : <a href="http://www.kosus.in/" target="_blank">Kosus Technologies</a>
+        &copy; <%= DateTime.Now.Year.ToString() %> SchooT
     </footer>
     <!-- /. FOOTER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
